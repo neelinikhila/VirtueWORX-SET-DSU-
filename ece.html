@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics and Communication Engineering - DSU Trichy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a4b8c;
+            --primary-dark: #0d3a73;
+            --secondary: #f8f9fa;
+            --accent: #ff9e1b;
+            --text: #333;
+            --light-text: #6c757d;
+            --border: #dee2e6;
+            --blue-light: #e6f0ff;
+        }
+
+        body {
+            background: linear-gradient(to bottom, var(--blue-light) 0%, white 300px);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a i {
+            margin-right: 5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: var(--secondary);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breadcrumb ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb li:after {
+            content: "/";
+            margin-left: 0.5rem;
+            color: var(--light-text);
+        }
+
+        .breadcrumb li:last-child:after {
+            content: "";
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 75, 140, 0.85), rgba(26, 75, 140, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231a4b8c" width="100" height="100"/><path fill="%230d3a73" d="M0 0L100 100M100 0L0 100" stroke-width="0.5"/></svg>');
+            background-size: cover;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Program Info */
+        .program-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .program-header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .program-header h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #e88c00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Semester Tabs */
+        .semester-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            gap: 0.5rem;
+        }
+
+        .semester-tab {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--blue-light);
+            border: 1px solid var(--border);
+            border-bottom: none;
+            cursor: pointer;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .semester-tab:hover {
+            background-color: #d0e2ff;
+        }
+
+        .semester-tab.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .semester-content {
+            display: none;
+            padding: 2rem;
+            background-color: white;
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .semester-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .course-list {
+            list-style: none;
+        }
+
+        .course-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+        }
+
+        .course-list li:last-child {
+            border-bottom: none;
+        }
+
+        .course-code {
+            display: inline-block;
+            width: 150px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #e2e2e2;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section a i {
+            margin-right: 8px;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .semester-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 5px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-text">DSU Trichy</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="https://neelinikhila.github.io/VirtueWORX-SET-DSU-/"><i class="fas fa-home"></i>
+                            Home</a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+                    <li><a href="#"><i class="fas fa-user-graduate"></i> Admissions</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="https://neelinikhila.github.io/VirtueWORX-SET-DSU-/">Home</a></li>
+                <li><a href="#">Programs</a></li>
+                <li>Electronics and Communication Engineering</li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <h1>B.Tech Electronics and Communication Engineering</h1>
+            <p>Regulation 2021 • School of Electronics • Semesters I-VIII</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn"><i class="fas fa-download"></i> Download Brochure</a>
+                <a href="#" class="btn btn-outline"><i class="fas fa-user-graduate"></i> Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="program-info">
+            <div class="program-header">
+                <h2>Program Curriculum</h2>
+                <p>The B.Tech in Electronics and Communication Engineering program provides students with a strong
+                    foundation in
+                    electronics circuits,communication systems ,signal processing,embedded systems.</p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn"><i class="fas fa-print"></i> Print Curriculum</button>
+                <button class="btn btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+            </div>
+
+            <div class="semester-container">
+                <div class="semester-tabs">
+                    <div class="semester-tab active" onclick="showSemester(1)">Semester I</div>
+                    <div class="semester-tab" onclick="showSemester(2)">Semester II</div>
+                    <div class="semester-tab" onclick="showSemester(3)">Semester III</div>
+                    <div class="semester-tab" onclick="showSemester(4)">Semester IV</div>
+                    <div class="semester-tab" onclick="showSemester(5)">Semester V</div>
+                    <div class="semester-tab" onclick="showSemester(6)">Semester VI</div>
+                    <div class="semester-tab" onclick="showSemester(7)">Semester VII</div>
+                    <div class="semester-tab" onclick="showSemester(8)">Semester VIII</div>
+                </div>
+
+                <div id="semester1" class="semester-content active">
+                    <h3>First Semester Courses</h3>
+                    <ul class="course-list">
+                        <li><span class="course-code">ECE 101</span> Communicative English (HS)</li>
+                        <li><span class="course-code">ECE 102</span> Engineering Mathematics – I (BS)</li>
+                        <li><span class="course-code">ECE 103</span> Engineering Physics (BS)</li>
+                        <li><span class="course-code">ECE 104</span> Engineering Chemistry (BS)</li>
+                        <li><span class="course-code">ECE 105</span> Programming for Problem Solving (ES)</li>
+                        <li><span class="course-code">ECE 106</span> Basic Electrical Engineering (ES)</li>
+                        <li><span class="course-code">ECE 107</span> Physics & Chemistry Lab (BS)</li>
+                        <li><span class="course-code">ECE 108</span> Programming Lab (ES)</li>
+                        <li><span class="course-code">ECE 109</span> Electrical Engineering Workshop (ES)</li>
+                    </ul>
+                    <div class="action-buttons">
+                        <button class="btn"><i class="fas fa-book"></i> View Detailed Syllabus</button>
+                        <button class="btn btn-ece"><i class="fas fa-bolt"></i> Electrical Basics</button>
+                    </div>
+                </div>
+
+                <div id="semester2" class="semester-content">
+                    <h3>Second Semester Courses</h3>
+                    <ul class="course-list">
+                        <li><span class="course-code">ECE 201</span> Technical Communication (HS)</li>
+                        <li><span class="course-code">ECE 202</span> Engineering Mathematics – II (BS)</li>
+                        <li><span class="course-code">ECE 203</span> Engineering Mechanics (ES)</li>
+                        <li><span class="course-code">ECE 204</span> Electronic Devices (PC)</li>
+                        <li><span class="course-code">ECE 205</span> Electrical Circuit Theory (PC)</li>
+                        <li><span class="course-code">ECE 206</span> Engineering Graphics (ES)</li>
+                        <li><span class="course-code">ECE 207</span> Electronics Lab (PC)</li>
+                        <li><span class="course-code">ECE 208</span> Electrical Circuits Lab (PC)</li>
+                        <li><span class="course-code">ECE 209</span> Engineering Graphics Lab (ES)</li>
+                        <li><span class="course-code">ECE 210</span> Workshop Practice (ES)</li>
+                    </ul>
+                    <div class="action-buttons">
+                        <button class="btn"><i class="fas fa-book"></i> View Detailed Syllabus</button>
+                        <button class="btn btn-ece"><i class="fas fa-project-diagram"></i> Circuit Simulator</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="semester3" class="semester-content active">
+                <h3>Third Semester Courses</h3>
+                <ul class="course-list">
+                    <li><span class="course-code">ECE 301</span> Engineering Mathematics – III (BS)</li>
+                    <li><span class="course-code">ECE 302</span> Network Analysis & Synthesis (PC)</li>
+                    <li><span class="course-code">ECE 303</span> Electronic Circuits (PC)</li>
+                    <li><span class="course-code">ECE 304</span> Electromagnetic Fields (PC)</li>
+                    <li><span class="course-code">ECE 305</span> Digital Logic Design (PC)</li>
+                    <li><span class="course-code">ECE 306</span> Signals & Systems (PC)</li>
+                    <li><span class="course-code">ECE 307</span> Electronic Circuits Lab (PC)</li>
+                    <li><span class="course-code">ECE 308</span> Digital Logic Design Lab (PC)</li>
+                    <li><span class="course-code">ECE 309</span> Signals & Systems Lab (PC)</li>
+                </ul>
+                <div class="action-buttons">
+                    <button class="btn"><i class="fas fa-book"></i> View Detailed Syllabus</button>
+                    <button class="btn btn-ece"><i class="fas fa-project-diagram"></i> Circuit Simulator</button>
+                </div>
+            </div>
+
+            <div id="semester4" class="semester-content">
+                <h3>Fourth Semester Courses</h3>
+                <ul class="course-list">
+                    <li><span class="course-code">ECE 401</span> Probability & Statistics (BS)</li>
+                    <li><span class="course-code">ECE 402</span> Analog Communication (PC)</li>
+                    <li><span class="course-code">ECE 403</span> Control Systems (PC)</li>
+                    <li><span class="course-code">ECE 404</span> Microprocessors & Microcontrollers (PC)</li>
+                    <li><span class="course-code">ECE 405</span> Linear Integrated Circuits (PC)</li>
+                    <li><span class="course-code">ECE 406</span> Environmental Science (NC)</li>
+                    <li><span class="course-code">ECE 407</span> Analog Communication Lab (PC)</li>
+                    <li><span class="course-code">ECE 408</span> Microprocessors Lab (PC)</li>
+                    <li><span class="course-code">ECE 409</span> Linear ICs Lab (PC)</li>
+                </ul>
+                <div class="action-buttons">
+                    <button class="btn"><i class="fas fa-book"></i> View Detailed Syllabus</button>
+                    <button class="btn btn-ece"><i class="fas fa-broadcast-tower"></i> Communication Resources</button>
+                </div>
+            </div>
+
+            <div id="semester5" class="semester-content">
+                <h3>Fifth Semester Courses</h3>
+                <ul class="course-list">
+                    <li><span class="course-code">ECE 501</span> Digital Communication (PC)</li>
+                    <li><span class="course-code">ECE 502</span> VLSI Design (PC)</li>
+                    <li><span class="course-code">ECE 503</span> Antennas & Wave Propagation (PC)</li>
+                    <li><span class="course-code">ECE 504</span> Professional Elective I (PE)</li>
+                    <li><span class="course-code">ECE 505</span> Open Elective I (OE)</li>
+                    <li><span class="course-code">ECE 506</span> Digital Signal Processing (PC)</li>
+                    <li><span class="course-code">ECE 507</span> Digital Communication Lab (PC)</li>
+                    <li><span class="course-code">ECE 508</span> VLSI Design Lab (PC)</li>
+                    <li><span class="course-code">ECE 509</span> DSP Lab (PC)</li>
+                </ul>
+                <div class="action-buttons">
+                    <button class="btn"><i class="fas fa-book"></i> View Detailed Syllabus</button>
+                    <button class="btn btn-ece"><i class="fas fa-satellite"></i> Antenna Resources</button>
+                </div>
+            </div>
+
+            <div id="semester6" class="semester-content">
+                <h3>Sixth Semester Courses</h3>
+                <ul class="course-list">
+                    <li><span class="course-code">ECE 601</span> Microwave Engineering (PC)</li>
+                    <li><span class="course-code">ECE 602</span> Optical Communication (PC)</li>
+                    <li><span class="course-code">ECE 603</span> Embedded Systems (PC)</li>
+                    <li><span class="course-code">ECE 604</span> Professional Elective II (PE)</li>
+                    <li><span class="course-code">ECE 605</span> Open Elective II (OE)</li>
+                    <li><span class="course-code">ECE 606</span> Wireless Communication (PC)</li>
+                    <li><span class="course-code">ECE 607</span> Microwave Engineering Lab (PC)</li>
+                    <li><span class="course-code">ECE 608</span> Embedded Systems Lab (PC)</li>
+                    <li><span class="course-code">ECE 609</span> Mini Project (EEC)</li>
+                </ul>
+                <div class="action-buttons">
+                    <button class="btn"><i class="fas fa-book"></i> View Detailed Syllabus</button>
+                    <button class="btn btn-ece"><i class="fas fa-wifi"></i> Wireless Resources</button>
+                </div>
+            </div>
+
+            <div id="semester7" class="semester-content">
+                <h3>Seventh Semester Courses</h3>
+                <ul class="course-list">
+                    <li><span class="course-code">ECE 701</span> Internet of Things (PC)</li>
+                    <li><span class="course-code">ECE 702</span> Radar Engineering (PC)</li>
+                    <li><span class="course-code">ECE 703</span> Professional Elective III (PE)</li>
+                    <li><span class="course-code">ECE 704</span> Professional Elective IV (PE)</li>
+                    <li><span class="course-code">ECE 705</span> Open Elective III (OE)</li>
+                    <li><span class="course-code">ECE 706</span> IoT Lab (PC)</li>
+                    <li><span class="course-code">ECE 707</span> Radar Engineering Lab (PC)</li>
+                    <li><span class="course-code">ECE 708</span> Industrial Training / Internship (IEC)</li>
+                </ul>
+                <div class="action-buttons">
+                    <button class="btn"><i class="fas fa-book"></i> View Detailed Syllabus</button>
+                    <button class="btn btn-ece"><i class="fas fa-radar"></i> Radar Resources</button>
+                </div>
+            </div>
+
+            <div id="semester8" class="semester-content">
+                <h3>Eighth Semester Courses</h3>
+                <ul class="course-list">
+                    <li><span class="course-code">ECE 801</span> Professional Elective V (PE)</li>
+                    <li><span class="course-code">ECE 802</span> Project Management (HS)</li>
+                    <li><span class="course-code">ECE 803</span> Project Work (EFC)</li>
+                </ul>
+                <div class="action-buttons">
+                    <button class="btn"><i class="fas fa-book"></i> View Detailed Syllabus</button>
+                    <button class="btn btn-ece"><i class="fas fa-graduation-cap"></i> Project Guidelines</button>
+                </div>
+            </div>
+        </div>
+        <div class="program-header" style="margin-top: 3rem;">
+            <h2>Program Highlights</h2>
+            <p>The Computer Science Engineering program focuses on developing expertise in software development,
+                algorithms, data structures, and computer systems.</p>
+        </div>
+
+        <div class="semester-content">
+            <h3>Key Focus Areas</h3>
+            <ul class="course-list">
+                <li><span class="course-code">Focus Area 1</span> Programming & Software Development</li>
+                <li><span class="course-code">Focus Area 2</span> Data Structures & Algorithms</li>
+                <li><span class="course-code">Focus Area 3</span> Database Management Systems</li>
+                <li><span class="course-code">Focus Area 4</span> Computer Networks</li>
+                <li><span class="course-code">Focus Area 5</span> Artificial Intelligence & Machine Learning</li>
+                <li><span class="course-code">Focus Area 6</span> Web Technologies</li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DSU Trichy</h3>
+                    <p>Dedicated to excellence in education, research and innovation in computing and technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="https://neelinikhila.github.io/VirtueWORX-SET-DSU-/"><i class="fas fa-home"></i>
+                                Home</a></li>
+                        <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-graduation-cap"></i> Programs</a></li>
+                        <li><a href="#"><i class="fas fa-user-graduate"></i> Admissions</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> DSU Trichy Campus</p>
+                    <p>Trichy - 620 024, Tamil Nadu</p>
+                    <p><i class="fas fa-phone"></i> Phone: +91 431 250 0000</p>
+                    <p><i class="fas fa-envelope"></i> Email: info@dsutrichy.edu.in</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DSU Trichy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSemester(semesterNum) {
+            // Hide all semester contents
+            const contents = document.querySelectorAll('.semester-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.semester-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show the selected semester content
+            document.getElementById('semester' + semesterNum).classList.add('active');
+
+            // Activate the clicked tab
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
